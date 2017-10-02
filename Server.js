@@ -24,7 +24,6 @@ io.on("connection", function (socket) {
       } else {
         listLocation.push(data);
       }
-
     }
 
     console.log('location: ', listLocation);
