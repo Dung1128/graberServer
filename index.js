@@ -8,7 +8,6 @@ var listLocation = [];
 io.on("connection", function (socket) {
   // xu ly xoa id khoi mang khi user disconnect
   socket.on('disconnect', (reason) => {
-    // ...
     var result = _.findIndex(listLocation, item => {
       console.log('find', item.key, socket.id);
       return item.key === socket.id;
