@@ -6,6 +6,18 @@ server.listen(process.env.PORT || 3000);
 var _ = require('lodash')
 var listLocation = [];
 io.on("connection", function (socket) {
+  socket.on('disconnect', (reason) => {
+    // ...
+    var result = _.findIndex(listLocation, item => {
+      console.log('find', item.key, socket.id);
+      return item.key === socket.id;
+    });
+    console.log(result);
+    if (result >= 0) {
+      listLocation.splice(result, 1)
+    }
+  });
+
   console.log("user connected" + socket.id);
   io.sockets.emit('socket-id', socket.id);
   socket.on('location-client', function (data) {
