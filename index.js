@@ -6,6 +6,7 @@ server.listen(process.env.PORT || 3000);
 var _ = require('lodash')
 var listLocation = [];
 io.on("connection", function (socket) {
+  // xu ly xoa id khoi mang khi user disconnect
   socket.on('disconnect', (reason) => {
     // ...
     var result = _.findIndex(listLocation, item => {
@@ -20,6 +21,8 @@ io.on("connection", function (socket) {
 
   console.log("user connected" + socket.id);
   io.sockets.emit('socket-id', socket.id);
+
+  // add socket.id vao mang, tra ve cho client mang id, location => hien xe
   socket.on('location-client', function (data) {
     // listLocation.push(data);
     var flag = 0;
