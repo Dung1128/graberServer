@@ -20,7 +20,6 @@ io.on("connection", function (socket) {
 
   console.log("user connected" + socket.id);
   io.sockets.emit('socket-id', socket.id);
-
   // add socket.id vao mang, tra ve cho client mang id, location => hien xe
   socket.on('location-client', function (data) {
     // listLocation.push(data);
